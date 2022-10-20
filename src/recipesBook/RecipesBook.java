@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class RecipesBook {
 
-    private Set<Recipe> recipes;
+    private final Set<Recipe> recipes;
 
     public RecipesBook() {
         recipes = new HashSet<>();

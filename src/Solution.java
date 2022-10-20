@@ -23,8 +23,8 @@ public class Solution {
         var recipesBook = new RecipesBook();
 
         var recipe = new Recipe("first recipe");
-        recipe.addProduct(new Product(Good.APPLE, 1, 15.00));
-        recipe.addProduct(new Product(Good.BANANA, 1, 19.00));
+        recipe.addProduct(new Product(Good.APPLE, 1, 15.00), 2);
+        recipe.addProduct(new Product(Good.BANANA, 1, 19.00), 1);
         recipesBook.addRecipe(recipe);
     }
 }

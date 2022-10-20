@@ -2,28 +2,26 @@ package recipesBook;
 
 import shoppingList.Product;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recipe {
 
     private String name;
     private double totalPrice;
-    private Set<Product> products;
+    private final Map<Product, Integer> products;
 
     public Recipe(String name) {
         setName(name);
         totalPrice = 0;
-        products = new HashSet<>();
+        products = new HashMap<>();
     }
 
-    public void addProduct(Product product) {
-        if (products.contains(product)) {
+    public void addProduct(Product product, int count) {
+        if (products.containsKey(product)) {
             throw new IllegalArgumentException("This product is already exists!");
         }
-        products.add(product);
-        totalPrice += product.getPrice();
+        products.put(product, count);
+        totalPrice += product.getPrice() * count;
     }
 
     public String getName() {
@@ -34,8 +32,8 @@ public class Recipe {
         return totalPrice;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public Map<Product, Integer> getProducts() {
+        return Collections.unmodifiableMap(products);
     }
 
     public void setName(String name) {
